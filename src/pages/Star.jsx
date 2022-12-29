@@ -1,8 +1,11 @@
 import React from 'react'
+import MainPageLayout from '../components/MainPageLayout';
 
 const Star = () => {
   return (
-    <div>This is the Star page</div>
+    <MainPageLayout>
+        This is the Star page
+    </MainPageLayout>
   )
 }
 export default Star;

@@ -11,7 +11,7 @@ const navlist=[
             <ul>
                 {navlist.map(elem => {
                     return (
-                        <li>
+                        <li key={elem.link}>
                             <Link to={elem.link}>{elem.linkname}</Link>
                         </li>
                     );
