@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import MainPageLayout from '../components/MainPageLayout';
 import { apiGet } from '../misc/config';
+import Actorgrid from '../components/actors/Actorgrid.jsx';
+import Showgrid from '../components/shows/Showgrid.jsx';
 const Home = () => {
     const [input,setinput]=useState('');
     const [result,setresult]=useState(null);
-    const [option,setoption]=useState('shows');
+    const [option,setoption]=useState('cshows');
     const [current,setcurrent]=useState('shows');
     const handelInput=(ev)=>{
         
@@ -15,7 +17,7 @@ const Home = () => {
        apiGet(`/search/${option}?q=${input}`).then(result=>{
        setcurrent(option);
         setresult(result); 
-       console.log(result);
+       //console.log(result);
        }); 
        
     };
@@ -32,20 +34,11 @@ const Home = () => {
             return 'No results found';
         }
         else {
-            return (result.map(item=>{
-                if (current==='shows'){
-                 return (
-                <div key={item.show.id}>
-                        {item.show.name}
-                        </div>)  }
-                else{
-                    return (
-                        <div key={item.person.id}>
-                        {item.person.name}
-                    </div>);
-                }
-            })
-            )}
+           
+               return (current==='shows'?<Showgrid  data={result}/> :<Actorgrid data={result}/>) 
+                        
+                
+           }
 
            
         
