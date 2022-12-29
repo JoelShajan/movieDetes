@@ -1,8 +1,9 @@
 import React from 'react';
 import notfound from '../../images/not-found.png';
 import ActorCard from './Actorcard';
+import {Flexgrid} from '../styled';
 const Actorgrid = ({data}) => {
-  return (<div>{
+  return (<Flexgrid>{
     data.map(
         ({person})=>{
             //console.log(person.country?person.country.name:null);
@@ -15,7 +16,7 @@ const Actorgrid = ({data}) => {
             deathday={person.deathday}  />);  
         }
     )
-    }</div>
+    }</Flexgrid>
    
   )
 }
