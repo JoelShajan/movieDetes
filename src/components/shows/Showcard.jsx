@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { StyledShow } from './StyledShow';
 const Showcard = ({id,name,image,summary}) => {
-    const desc=summary? summary.split(" ").slice(0,10).join(" ").replace( /(<([^>]+)>)/ig, '') : 'Summary unavailable'
+    const desc=summary? summary.split(" ").slice(0,10).join(" ").replace( /(<([^>]+)>)/ig, '')+"..." : 'Summary unavailable'
     return (
         <StyledShow>
           <div className='img-wrapper'>
