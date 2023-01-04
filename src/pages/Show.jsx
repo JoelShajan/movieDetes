@@ -1,11 +1,15 @@
 import React,{useEffect,useReducer} from 'react';
 import { useParams } from 'react-router';
+import Details from '../components/shows/Details';
+import Showmain from '../components/shows/Showmain';
+import Cast from '../components/shows/Cast';
 import { apiGet } from '../misc/config';
+import Seasons from '../components/shows/Seasons';
 
 const reducer=(prevState,action)=>{
   switch(action.type){
     case 'FETCH_SUCESS':{
-    return ({isLoading:false,show:action.show});
+    return ({isloading:false,show:action.show});
     }
     default: return prevState;
   }
@@ -17,11 +21,11 @@ const initialState={
 
 const Show = () => {
     const {id}=useParams();
-    const [state,dispatch] = useReducer(reducer,initialState);
+    const [{show,isloading},dispatch] = useReducer(reducer,initialState);
     // const [show,setShow]=useState(null);
     // const [isloading,setloading]=useState(true);
     // const [error,seterror]=useState(null);
-    console.log(state);
+   
     useEffect(()=>{
         apiGet(`/shows/${id}?embed[]=seasons&embed[]=cast`).then(results=>{
            
@@ -32,13 +36,42 @@ const Show = () => {
     },[id]);
    //console.log(show);
    
-  if (state.isloading){
+  if (isloading){
     return (
         <div>Show data is loading</div>
       )
    }
   return (
-    <div>Show data has loaded</div>
+    <div>
+    <Showmain
+    image={show.image}
+    name={show.name}
+    rating={show.rating}
+    summary={show.summary}
+    tags={show.genres}
+    />
+
+    <div>
+      <h2>Details</h2>
+      <Details status={show.status}
+      network={show.network}
+      premiered={show.premiered}
+      />
+    </div>
+    <div>
+      <h2>Seasons</h2>
+      <Seasons
+      seasons={show._embedded.seasons}
+      />
+    </div>
+    <div>
+      <h2>Cast</h2>
+      <Cast
+      cast={show._embedded.cast}
+      />
+    </div>
+    
+    </div>
   )
 }
 export default Show

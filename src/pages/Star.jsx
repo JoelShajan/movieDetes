@@ -1,11 +1,10 @@
 import React from 'react'
-import MainPageLayout from '../components/MainPageLayout';
+import { StyledStar } from '../components/styled';
+//import MainPageLayout from '../components/MainPageLayout';
 
 const Star = () => {
   return (
-    <MainPageLayout>
-        This is the Star page
-    </MainPageLayout>
+   <StyledStar>P</StyledStar>
   )
 }
 export default Star;
