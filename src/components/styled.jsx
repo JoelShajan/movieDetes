@@ -7,15 +7,16 @@ padding:2ch;`;
 
 export const SearchCard = styled.div`
   width: 20vw;
-  height: 100%;
+  max-height: 60ch;
   margin: 0 15px 40px;
   //background:rgb(150,150,150,.1);
-  border-radius: 2ch;
+  border-radius: 2.5ch;
   padding:1ch;
   transition:transform .2s;
-  border: solid 3px black;
+  border: solid 2px black;
   &:hover{
-    transform: scale(1.05);
+    //transform: scale(1.05);
+    box-shadow:0px 0px 10px rgba(0,0,0,0.4);
   }
   .img-wrapper {
     width: 100%;
@@ -35,6 +36,7 @@ export const SearchCard = styled.div`
   h1 {
     margin: 10px 0;
     font-size: 21px;
+    color:#2596be;
   }
 
   p {
@@ -58,4 +60,27 @@ clip-path: polygon(
   2% 35%,
   39% 35%
 );
+`;
+export const ShowPageWrapper = styled.div`
+  padding: 0 20px;
+
+  @media only screen and (min-width: 516px) {
+    padding: 0 40px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    padding: 0 60px;
+  }
+
+  @media only screen and (min-width: 992px) {
+    padding: 0 80px;
+  }
+`;
+export const InfoBlock = styled.div`
+  margin-bottom: 40px;
+  h2 {
+    margin: 0;
+    margin-bottom: 30px;
+    font-size: 22px;
+  }
 `;

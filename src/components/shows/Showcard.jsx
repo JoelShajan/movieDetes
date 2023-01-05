@@ -14,7 +14,7 @@ const Showcard = ({id,name,image,summary}) => {
           <p>{desc}</p>
     
           <div className='btns'>
-            <Link to={`/show/${id}`}>Read more</Link>
+            <Link style={{textDecoration:"none",color:"#2596be"}} to={`/show/${id}`}>Read more</Link>
             <button type="button">Star me</button>
           </div>
         </StyledShow>
